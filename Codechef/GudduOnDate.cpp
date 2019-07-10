@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+
 #define inte unsigned long long int
 
 int main() {
