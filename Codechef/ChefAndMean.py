@@ -1,24 +1,33 @@
-# cook your dish9 here
 import sys
+
+def check(l):
+    var=l[0]
+    for i in l:
+        if(var!=i):
+            return False
+    return True
+
+
 
 q=int(input())
 
 for tc in range(q):
     n=int(input())
     lt=list(map(int, input().split()))
-    mean=sum(lt)/len(lt)
-    l=len(lt)
     flag=0
     
-    for i in range(0, l):
-        temp=lt[i]
-        lt.remove(lt[i])
-        mean1=sum(lt)/len(lt)
-        if(mean == mean1):
-            flag=1
-            print(i+1)
-            break
-        lt.insert(i,temp)
-    if(flag==0):
+    if(check(lt)):
+        print(1)
+
+    elif(sum(lt)%n!=0):
         print('Impossible')
     
+    else:
+        mean=sum(lt)//n
+        result=mean*(n-1)
+        value=sum(lt)-result
+        if(value in lt):
+            ans=lt.index(value)
+            print(ans+1)
+        else:
+            print("Impossible")
