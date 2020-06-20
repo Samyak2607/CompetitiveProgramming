@@ -19,34 +19,26 @@ class BinarySearchTree:
     def __init__(self): 
         self.root = None
 
-#Node is defined as
-#self.left (the left child of the node)
-#self.right (the right child of the node)
-#self.info (the value of the node)
-
     def insert(self, val):
         if self.root is None:
             self.root=Node(val)
         else:
-            if self.root.info>=val:
-                if self.root.left is None:
-                    self.root.left=Node(val)
-                else:
-                    self.root=self.root.left
-                    insert(val)
+            root=self.root
+            if root.info>=val:
+                root=root.left
+                self.insert(val)
             else:
-                if self.root.right is None:
-                    self.root.right=Node(val)
-                else:
-                    self.root=self.root.right
-                    insert(val)
+                root=root.right
+                self.insert(val)
 
 tree = BinarySearchTree()
+print(tree.root)
 t = int(input())
 
 arr = list(map(int, input().split()))
 
 for i in range(t):
     tree.insert(arr[i])
-
+    print(tree.root)
+print(tree.root)
 preOrder(tree.root)
